@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+:root {
+  --font-geist-sans: "Geist Sans", system-ui, -apple-system, sans-serif;
+  --font-geist-mono: "Gesit Mono", monospace;
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --background-raw: 220 20% 97%;
+  --background: hsl(var(--background-raw));
+
+  --foreground-raw: 224 71% 4%;
+  --foreground: hsl(var(--foreground-raw));
+
+  --card-raw: 0 0% 100%;
+  --card: hsl(var(--card-raw));
+  --card-foreground-raw: 224 71% 4%;
+  --card-foreground: hsl(var(--card-foreground-raw));
+
+  --primary-raw: 220 14% 96%;
+  --primary: hsl(var(--primary-raw));
+  --primary-foreground: #ffffff;
+
+  --secondary-raw: 220 83% 58%;
+  --secondary: hsl(var(--secondary-raw));
+  --secondary-foreground: hsl(220 39% 10%);
+
+  --accent-raw: 322 81% 54%;
+  --accent: hsl(var(--accent-raw));
+
+  --success-raw: 142 76% 36%;
+  --success: hsl(var(--success-raw));
+  --warning-raw: 38 92% 50%;
+  --warning: hsl(var(--warning-raw));
+  --danger-raw: 346 84% 61%;
+  --danger: hsl(var(--danger-raw));
+
+  --border-raw: 220 13% 91%;
+  --border: hsl(var(--border-raw));
+  --input-raw: 220 13% 91%;
+  --input: hsl(var(--input-raw));
+  --ring-raw: 262 83% 58%;
+  --ring: hsl(var(--ring-raw));
+
+  --radius-lg: 1rem;
+  --radius-md: 0.75rem;
+  --radius-sm: 0.5rem;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-blur: 12px;
+
+  --transition-all: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-raw: 224 71% 4%;
+    --background: hsl(var(--background-raw));
+
+    --foreground-raw: 210 20% 98%;
+    --foreground: hsl(var(--foreground-raw));
+
+    --card-raw: 224 71% 6%;
+    --card: hsl(var(--card-raw));
+    --card-foreground-raw: 210 20% 98%;
+    --card-foreground: hsl(var(--card-foreground-raw));
+
+    --secondary-raw: 224 71% 8%;
+    --secondary: hsl(var(--secondary-raw));
+    --secondary-foreground: hsl(210 20% 98%);
+
+    --border-raw: 224 71% 12%;
+    --border: hsl(var(--border-raw));
+    --input-raw: 224 71% 12%;
+    --input: hsl(var(--input-raw));
+
+    --glass-bg: rgba(10, 10, 12, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.05);
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
