@@ -1,0 +1,56 @@
+.footer {
+    width: 100%;
+    border-top: 1px solid var(--border);
+    background-color: var(--card);
+    margin-top: auto;
+    transition: var(--transition-all);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+@media (min-width: 640px) {
+    .container {
+        flex-direction: row;
+        text-align: left;
+    }
+}
+
+.copyright {
+    font-size: 0.875rem;
+    color: var(--foreground);
+    opacity: 0.6;
+}
+
+.brand {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.link {
+    font-size: 0.875rem;
+    color: var(--foreground);
+    opacity: 0.6;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.link:hover {
+    opacity: 1;
+    color: var(--primary);
+}
