@@ -1,0 +1,342 @@
+.container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    min-height: calc(100vh - 8rem);
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+.welcomeSection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.greeting {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.025rem;
+    background: linear-gradient(135deg, var(--foreground) 30%, hsl(var(--foreground-raw) / 0.7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.batchBadge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary);
+    background-color: hsl(var(--primary-raw) / 0.08);
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--radius-sm);
+    width: fit-content;
+}
+
+.dashboardLayout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .dashboardLayout {
+        grid-template-columns: 3fr 1fr;
+    }
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sideContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.daySelector {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;
+}
+
+.daySelector::-webkit-scrollbar {
+    display: none;
+}
+
+.dayButton {
+    flex: 1;
+    min-width: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 0.5rem;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.dayButton:hover {
+    background-color: var(--secondary);
+    border-color: hsl(var(--foreground-raw) / 0.15);
+}
+
+.dayButtonActive {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--primary-foreground);
+}
+
+.dayButtonActive:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.dayName {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.dayButtonActive .dayName {
+    opacity: 0.9;
+}
+
+.dayDate {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-top: 0.25rem;
+}
+
+.scheduleList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.emptyState {
+    background-color: var(--card);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-lg);
+    padding: 4rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.emptyStateIcon {
+    font-size: 3rem;
+}
+
+.emptyStateTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.emptyStateDesc {
+    font-size: 0.95rem;
+    color: var(--foreground);
+    opacity: 0.6;
+    max-width: 20rem;
+}
+
+.card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    transition: var(--transition-all);
+    position: relative;
+    overflow: hidden;
+}
+
+@media (min-width: 640px) {
+    .card {
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 2rem;
+    }
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    border-color: hsl(var(--primary-raw) / 0.2);
+    box-shadow: var(--shadow-md);
+}
+
+.timeContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.timeStart {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--foreground);
+}
+
+.timeEnd {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--foreground);
+    opacity: 0.6;
+}
+
+.classDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.subjectName {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--foreground);
+}
+
+.instructorName {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--foreground);
+    opacity: 0.6;
+}
+
+.locationContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary);
+    background-color: hsl(var(--primary-raw) / 0.06);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
+    width: fit-content;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    text-transform: uppercase;
+}
+
+.badgeCanceled {
+    background-color: hsl(var(--danger-raw) / 0.08);
+    border: 1px solid hsl(var(--danger-raw) / 0.15);
+    color: var(--danger);
+}
+
+.badgeRescheduled {
+    background-color: hsl(var(--warning-raw) / 0.08);
+    border: 1px solid hsl(var(--warning-raw) / 0.15);
+    color: var(--warning);
+}
+
+.badgeOngoing {
+    background-color: hsl(var(--success-raw) / 0.08);
+    border: 1px solid hsl(var(--success-raw) / 0.15);
+    color: var(--success);
+}
+
+.quickActions {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.actionTitle {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.actionButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background-color: var(--secondary);
+    color: var(--foreground);
+    border: 1px solid var(--radius-md);
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.actionButton:hover {
+    background-color: var(--border);
+    transform: translateY(-1px);
+}
+
+.actionButtonPrimary {
+    background: linear-gradient(135deg, var(--primary), hsl(var(--primary-raw) / 0.85));
+    color: var(--primary-foreground);
+    border: none;
+}
+
+.actionButtonPrimary:hover {
+    background: linear-gradient(13deg, var(--primary), hsl(var(--primary-raw) / 0.85));
+    box-shadow: 0 4px 12px hsl(var(--primary-raw) / 0.2);
+}
+
+.reschedDetails {
+    font-size: 0.825rem;
+    color: var(--warning);
+    font-weight: 500;
+    margin-top: 0.25rem;
+}
+
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 8rem);
+    font-size: 1.125rem;
+    font-weight: 500;
+    gap: 0.5rem;
+}
+
+.spinner {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 3px solid var(--border);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {transform: rotate(360deg);}
+}
