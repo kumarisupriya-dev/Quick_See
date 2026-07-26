@@ -35,6 +35,7 @@ interface Schedule {
 
 interface Override {
     schedule_id: string;
+    target_date: string;
     is_canceled: boolean;
     new_start_time: string | null;
     new_end_time: string | null;
@@ -149,6 +150,45 @@ export default function DashboardPage() {
         }
         loadDateOverrides();
     }, [selectedDate, profile?.batch_id, supabase]);
+
+    useEffect(() => {
+        if (!profile?.batch_id) return;
+
+        const channel = supabase
+            .channel("realtime-overrides")
+            .on(
+                "postgres_changes",
+                {
+                    event: "*",
+                    schema: "public",
+                    table: "cancellations_reschedules",
+                },
+                (payload) => {
+                    const dateString = selectedDate.toISOString().split("T")[0];
+
+                    if (payload.eventType === "DELETE") {
+                        const deleteId = payload.old.schedule_id;
+                        setDailyOverrides((prev) => {
+                            const updated = {...prev};
+                            delete updated[deleteId];
+                            return updated;
+                        });
+                    } else {
+                        const newOverride = payload.new as Override;
+                        if (newOverride.target_date === dateString) {
+                            setDailyOverrides((prev) => ({
+                                ...prev,
+                                [newOverride.schedule_id]: newOverride,
+                            }));
+                        }
+                    }
+                }
+            )
+            .subscribe();
+        return () => {
+            supabase.removeChannel(channel);
+        };
+    }, [profile?.batch_id, selectedDate, supabase]);
 
     const formatDateLabel = (date: Date) => {
         return date.toLocaleDateString("en-US", {weekday: "short"});
