@@ -103,3 +103,31 @@
 .btnPrimary:active {
     transform: translateY(0);
 }
+
+.btnBell {
+    background-color: var(--secondary);
+    border: 1px solid var(--border);
+    color: var(--foreground);
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
+    height: 2.25rem;
+    width: 2.25rem;
+}
+
+.btnBell:hover {
+    background-color: var(--border);
+    transform: translateY(-1px);
+}
+
+.btnBellSubscribed {
+    color: #10b981;
+    border-color: rgba(16, 185, 129, 0.3);
+    background-color: rgba(16, 185, 129, 0.08);
+}
+
