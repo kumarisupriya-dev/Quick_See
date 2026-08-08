@@ -1,32 +1,50 @@
 "use client";
 
-import {useEffect, useState} from  "react";
+import {useEffect, useState} from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { subscribeToNotifications, getNotificationPermissionState} from "@/utils/push";
-import styles from "./Navbar.module.css"
+import {usePathname} from "next/navigation";
+import {subscribeToNotifications, getNotificationPermissionState} from "@/utils/push";
+import styles from "./Navbar.module.css";
 
 export default function Navbar() {
     const pathname = usePathname();
-    const [ permission, setPermission] = useState<string>("default");
-    const [ submitting, setSubmitting] = useState(false);
+    const [permission, setPermission] = useState<string>("default");
+    const [submitting, setSubmitting] = useState(false);
+    const [theme, setTheme] = useState<"light" | "dark">("light");
 
-    // Check current browser permission state on load
     useEffect(() => {
         getNotificationPermissionState().then(setPermission);
+
+        const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
+        if (savedTheme) {
+            setTheme(savedTheme);
+            document.documentElement.setAttribute("data-theme", savedTheme);
+        } else {
+            const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+            setTheme(systemTheme);
+            document.documentElement.setAttribute("data-theme", systemTheme);
+        }
     }, []);
 
-    const handleSubscribe = async () => {
+    const toggleTheme = () => {
+        const nextTheme = theme === "light" ? "dark" : "light";
+        setTheme(nextTheme);
+        localStorage.setItem("theme", nextTheme);
+        document.documentElement.setAttribute("data-theme", nextTheme);
+    };
+
+    const handleSubscribe = async () =>  {
         if (permission === "granted") {
-            alert("Notifications are already enabled on this browser!");
+            alert("🔔 Notifications are already enabled on this browser!");
             return;
         }
+
         setSubmitting(true);
         try {
             const success = await subscribeToNotifications();
             if (success) {
                 setPermission("granted");
-                alert("🔔 Success! Notifications enabled succssfully.");
+                alert("🔔 Success! Notifications enabled successfully.");
             }
         } catch (err: any) {
             alert(`Failed to enable notifications: ${err.message || err}`);
@@ -54,8 +72,8 @@ export default function Navbar() {
                         return (
                             <li key={link.href}>
                                 <Link
-                                    href={link.href}
-                                    className={`${styles.navLink} ${isActive ? styles.navLinkActive : ""}`}
+                                href={link.href}
+                                className={`${styles.navLink} ${isActive ? styles.navLinkActive : ""}`}
                                 >
                                     {link.name}
                                 </Link>
@@ -64,13 +82,23 @@ export default function Navbar() {
                     })}
                 </ul>
                 <div className={styles.actions}>
-                    {/* Dynamic bell subscribe toggle */}
+                    {/* Theme Toggle Button */}
+                    <button
+                    type="button"
+                    className={styles.btnBell}
+                    onClick={toggleTheme}
+                    title={`Switch to ${theme === "light" ? "Dark" : "Light"} Mode`}
+                    style={{marginRight: "0.25rem"}}
+                    >
+                        {theme === "light" ? "🌙" : "☀️"}
+                    </button>
+                    {/* Dynamic Bell Subscribe Toggle */}
                     <button
                     type="button"
                     className={`${styles.btnBell} ${permission === "granted" ? styles.btnBellSubscribed : ""}`}
                     onClick={handleSubscribe}
                     disabled={submitting}
-                    title={permission === "granted" ? "Notifications Enabled" : "Subscribe to Notifications"}
+                    title={permission === "granted" ? "Notification Enabled" : "Subscribe to Notifications"}
                     >
                         {permission === "granted" ? "🔔" : "🔕"}
                     </button>
