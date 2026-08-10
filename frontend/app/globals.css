@@ -2,10 +2,10 @@
 
 :root {
     --font-geist-sans: "Geist Sans", system-ui, -apple-system, sans-serif;
-    --font-gesit-mono: "Geist Mono", monospace;
+    --font-geist-mono: "Geist Mono", monospace;
 
     --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-gesit-mono);
+    --font-mono: var(--font-geist-mono);
 
     --background-raw: 220 20% 97%;
     --background: hsl(var(--background-raw));
@@ -18,13 +18,16 @@
     --card-foreground-raw: 224 71% 4%;
     --card-foreground: hsl(var(--card-foreground-raw));
 
-    --primary-raw: 220 14% 90%;
+    --primary-raw: 262 83% 58%;
     --primary: hsl(var(--primary-raw));
-    --primary-foreground: #ffffff;
+    --primary-foreground: hsl(var(--card-foreground-raw));
 
     --secondary-raw: 220 14% 90%;
-    --secondary: hsl(var(--secondary-raw));
-    --secondary-foreground: #ffffff;
+    --secondary: hsl(var(--primary-raw));
+    --secondary-foreground: hsl(220 39% 10%);
+
+    --accent-raw: 142 76% 36%;
+    --accent: hsl(var(--accent-raw));
 
     --success-raw: 142 76% 36%;
     --success: hsl(var(--success-raw));
@@ -69,9 +72,9 @@
     --card-foreground-raw: 210 20% 98%;
     --card-foreground: hsl(var(--card-foreground-raw));
 
-    --secondary-raw: 224 71% 12%;
+    --secodnary-raw: 224 71% 12%;
     --secondary: hsl(var(--secondary-raw));
-    --scondary-foreground: hsl(210 20% 98%);
+    --secondary-foreground: hsl(210 20% 98%);
 
     --border-raw: 224 71% 12%;
     --border: hsl(var(--border-raw));
@@ -90,14 +93,14 @@
         --foreground-raw: 210 20% 98%;
         --foreground: hsl(var(--foreground-raw));
 
-        --card-raw: 224 71% 6%;
+        --card-raw: 224 71%Z 6%;
         --card: hsl(var(--card-raw));
         --card-foreground-raw: 210 20% 98%;
         --card-foreground: hsl(var(--card-foreground-raw));
 
         --secondary-raw: 224 71% 12%;
         --secondary: hsl(var(--secondary-raw));
-        --secondary-foreground: hsl(210 20% 98%);
+        --seocndary-foreground: hsl(210 20% 98%);
 
         --border-raw: 224 71% 12%;
         --border: hsl(var(--border-raw));
@@ -137,11 +140,6 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--border);
-    border-radius: var(--radius-sm);
-}
-
-::-webkit-scrollbar-thumb:hover {
     background: var(--primary);
 }
 
@@ -160,7 +158,11 @@ body {
         transform: translateY(0);
     }
 }
+
 .animate-fade-in {
     animation: fadeIn 0.4s ease-out forwards;
 }
 
+.animate-slide-up {
+    animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
