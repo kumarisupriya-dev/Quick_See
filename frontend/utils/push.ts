@@ -23,6 +23,7 @@ export async function subscribeToNotifications() {
             throw new Error("Notification permission was denied by the user.");
         }
         const registration = await navigator.serviceWorker.register("/sw.js");
+        await navigator.serviceWorker.ready;
         const vapidPublicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
         if (!vapidPublicKey) {
             throw new Error("Missing NEXT_PUBLIC_VAPID_PUBLIC_KEY in environment variables.");
