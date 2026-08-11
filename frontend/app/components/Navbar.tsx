@@ -54,9 +54,10 @@ export default function Navbar() {
     };
 
     const links = [
-        {name: "Dashboard", href: "/dashboard"},
+        {name: "Dashboard", href: "/dahsboard"},
         {name: "AI Parser", href: "/ai-parser"},
         {name: "Checklist", href: "/checklist"},
+        {name: "LMS Sync", href: "/dashbaord/lms"},
     ];
 
     return (
