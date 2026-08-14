@@ -58,6 +58,7 @@ export default function Navbar() {
         {name: "AI Parser", href: "/ai-parser"},
         {name: "Checklist", href: "/checklist"},
         {name: "LMS Sync", href: "/dashboard/lms"},
+        {name: "Resources", href: "/dashboard/resources"},
     ];
 
     return (
