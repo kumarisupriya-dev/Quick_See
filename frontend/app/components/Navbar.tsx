@@ -59,6 +59,7 @@ export default function Navbar() {
         {name: "Checklist", href: "/checklist"},
         {name: "LMS Sync", href: "/dashboard/lms"},
         {name: "Resources", href: "/dashboard/resources"},
+        {name: "Notices", href: "/dashboard/announcements"},
     ];
 
     return (
