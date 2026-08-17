@@ -1,0 +1,369 @@
+.container {
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    min-height: calc(100vh - 8rem);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.025rem;
+    background: linear-gradient(135deg, var(--foreground) 30%, hsl(var(--foreground-raw) / 0.7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 0.875rem;
+    color: var(--foreground);
+    opacity: 0.6;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.sectionTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.feedContainer {
+    display :flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.pinnedHeader {
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.announcementCard {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    position: relative;
+    transition: var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+.announcementCard:hover {
+    border-color: rgba(99, 102, 241, 0.2);
+}
+
+.cardPinned {
+    border-left: 4px solid var(--accent);
+}
+
+.announcementTitle {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--foreground);
+    margin-bottom: 0.5rem;
+}
+
+.announcementBody {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+    white-space: pre-wrap;
+}
+
+.announcementMeta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    opacity :0.5;
+    border-top: 1px solid var(--border);
+    padding-top: 0.75rem;
+}
+
+.pinAction {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    opacity: 0.4;
+    transition: var(--transition-fast);
+}
+
+.pinAction:hover {
+    opacity: 1;
+}
+
+.pinActionActive {
+    opacity: 1;
+    color: var(--accent);
+}
+
+.pollCard {
+    background-color: var(--card);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.pollQuestion {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--foreground);
+}
+
+.pollOptionsList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.pollOptionWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    cursor: pointer;
+}
+
+.pollOptionRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.pollProgressBg {
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    height: 0.5rem;
+    border-radius: 9999px;
+    overflow: hidden;
+    position: relative;
+}
+
+.pollProgressFill {
+    background-color: var(--primary);
+    height: 100%;
+    border-radius: 9999px;
+    transition: width 0.4s ease-out;
+}
+
+.pollProgressFillSelected {
+    background-color: var(--accent);
+}
+
+.btnVoteOption {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--foreground);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnVoteOption:hover {
+    border-color: var(--primary);
+    background-color: rgba(99, 102, 241, 0.05);
+}
+
+.btnVoteOptionSelected {
+    border-color: var(--accent);
+    background-color: rgba(240, 65, 168, 0.08);
+    color: var(--accent);
+}
+
+.totalVotes {
+    font-size: 0.7rem;
+    opacity: 0.5;
+    font-weight: 600;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.sidebarCard {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.cardTitle {
+    font-size: 1.15rem;
+    font-weight: 700;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.label {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.input, .textarea {
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    color: var(--foreground);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    outline: none;
+    width: 100%;
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 4rem;
+}
+
+.btnSubmit {
+    background: var(--primary);
+    color: var(--primary-foreground);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.btmSubmit:hover {
+    opacity: 0.9;
+}
+
+.pollFormOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.optionInputRow {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btnRemoveOption {
+    background-color: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+}
+
+.btnRemoveOption:hover {
+    background-color: rgba(239, 68, 68, 0.15);
+}
+
+.btnAddOption {
+    background-color: var(--secondary);
+    border: 1px solid var(--border);
+    color: var(--foreground);
+    padding: 0.375rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btnAddOption:hover {
+    background-color: var(--border);
+}
+
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 8rem);
+    font-size: 1.125rem;
+    font-weight: 500;
+    gap: 0.5rem;
+}
+
+.spinner {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 3px solid var(--border);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.emptyState {
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-lg);
+    padding: 3rem 1.5rem;
+    text-align: center;
+    opacity: 0.6;
+    font-size: 0.9rem;
+}
+
+@keyframes spin {
+    to {transform: rotate(360deg);}
+}
+
