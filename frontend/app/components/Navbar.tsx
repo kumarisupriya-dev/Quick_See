@@ -60,6 +60,7 @@ export default function Navbar() {
         {name: "LMS Sync", href: "/dashboard/lms"},
         {name: "Resources", href: "/dashboard/resources"},
         {name: "Notices", href: "/dashboard/announcements"},
+        {name: "GPA Calc", href: "/dashboard/gpa"},
     ];
 
     return (

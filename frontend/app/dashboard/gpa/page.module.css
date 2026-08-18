@@ -1,0 +1,286 @@
+.container {
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    min-height: calc(100vh - 8rem);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    background: linear-gradient(135deg, var(--foreground) 30%, hsl(var(--foreground-raw) / 0.7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 0.875rem;
+    color: var(--foreground);
+    opacity: 0.6;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.sectionTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.gpaStatsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.statCard {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.statLabel {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    opacity: 0.5;
+    letter-spacing: 0.05em;
+}
+
+.statVal {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.statValAccent {
+    color: var(--accent);
+}
+
+.statSub {
+    font-size: 0.75rem;
+    opacity: 0.6;
+}
+
+.mainPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.calcCard {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.semesterHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.semTitle {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--foreground);
+}
+
+.courseRow {
+    display: flex;
+    grid-template-columns: 2fr 1fr 1.2fr 40px;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.input, .select {
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    color: var(--foreground);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    outline: none;
+    width: 100%;
+}
+
+.btnDeleteCourse {
+    background-color: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    height: 2.25rem;
+    width: 2.25rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.btnDeleteCourse:hover {
+    background-color: rgba(239, 68, 68, 0.15);
+}
+
+.semActions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.btnSec{
+    background-color: var(--secondary);
+    border: 1px solid var(--border);
+    color: var(--foreground);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.btnSec:hover {
+    background-color: var(--border);
+}
+
+.btnPrim {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.btnPrim:hover {
+    opacity: 0.9;
+}
+
+.sidebar {
+    display :flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.sidebarCard {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.cardTitle {
+    font-size: 1.15rem;
+    font-weight: 700;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.label {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.goalResult {
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.goalTitle {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--foreground);
+}
+
+.goalTarget {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #db2777;
+}
+
+.goalDesc {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    line-height: 1.4;
+}
+
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 8rem);
+    font-size: 1.125rem;
+    font-weight: 500;
+    gap: 0.5rem;
+}
+
+.spinner {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 3px solid var(--border);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {transform: rotate(360deg);}
+}
