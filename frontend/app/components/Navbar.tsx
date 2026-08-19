@@ -61,6 +61,7 @@ export default function Navbar() {
         {name: "Resources", href: "/dashboard/resources"},
         {name: "Notices", href: "/dashboard/announcements"},
         {name: "GPA Calc", href: "/dashboard/gpa"},
+        {name: "AI Copilot", href: "/dashboard/copilot"},
     ];
 
     return (
