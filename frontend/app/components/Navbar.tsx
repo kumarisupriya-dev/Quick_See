@@ -62,6 +62,7 @@ export default function Navbar() {
         {name: "Notices", href: "/dashboard/announcements"},
         {name: "GPA Calc", href: "/dashboard/gpa"},
         {name: "AI Copilot", href: "/dashboard/copilot"},
+        {name: "Focus Room", href: "/dashboard/focus"},
     ];
 
     return (
