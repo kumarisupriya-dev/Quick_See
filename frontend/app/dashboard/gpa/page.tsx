@@ -51,7 +51,7 @@ export default function GpaCalculator() {
 
                 const {data: profileData} = await supabase
                     .from("profiles")
-                    .select("batch_id, ful_name")
+                    .select("batch_id, full_name")
                     .eq("id", user.id)
                     .single();
 
