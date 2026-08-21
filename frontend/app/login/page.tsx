@@ -107,7 +107,7 @@ export default function LoginPage() {
                             id="fullName"
                             type="text"
                             className={styles.input}
-                            placeholder="Alex Mercer"
+                            placeholder="Supriya Kumari"
                             value={fullName}
                             onChange={(e) => setFullName(e.target.value)}
                             required={isRegister}
@@ -122,7 +122,7 @@ export default function LoginPage() {
                         id="email"
                         type="email"
                         className={styles.input}
-                        placeholder="alex@university.edu"
+                        placeholder="supriya@example.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required

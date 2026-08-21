@@ -7,21 +7,34 @@ Furthermore, it syncs updates-like cancellations or reschedules-in real-time acr
 
 ## Features
 **AI-Powered Timetable Parser:** Drag and drop an image or PDF of your university timetable. The app extracts lectures, timings, rooms, and instructors instantly.
+
 **Real-Time Schedule Sync:** Class representatives can post cancellations or reschedules, which instantly update the calendar dashboards of all batch mates in real-time.
+
 **Crowdsourced Material Checklist:** Share preparation checksheets for courses(e.g. "Wear lab coat). Peer moderation filters out duplicate or incorrect entries.
+
 **Nightly Pack-Your-Bag Alert:** Receives push notifications and email summaries at 9:00 PM listing tomorrow's schedule and what to pack.
+
 **LMS Portal Sync:** Connects with Canvas, Moodle, and Blackboard sandbox credentials to pull deadlines and sync assignments straight into your cohort checklist.
+
 **Cohort Study Material Drive:** Category-organized repository (Lecture Notes, Slides, Past Papers) with peer upvoting and live countdown cards ticking down to midterms/finals.
+
 **Class Notice Board & Polls:** Share cohort announcements (pin notices to top of feed) and host scheduling polls with real-time percentage indicators.
+
 **GPA Calculator & Projection:** Auto-populates active courses from your timetable to calculate SGPA, combined with a goal projection widget estimating grades needed in remaining semesters.
+
 **AI Academic Copilot:** A chat assistant fed with all your batch databases (timetables, resources, checklists, GPA goals) to act as a custom academic planner.
+
 **Peer Study Rooms & Pomodoro Timer:** Schedule co-working sessions, track attendee seat capacities, and study together using the interactive Pomodoro academic planner.
+
 **Flashcards Hub:** Create shared flashcard decks with 3D card flips and study queues that loop difficult cards until mastered.
 
 ## Known Bugs
 **SW Active Timing Race:** Notification subscriptions may ocassionally fail if requested immediately before the service worker reaches an active state.
+
 **Framer Motion Grid Shifts:** Rapid status toggles on the focus countdowns or Pomodoro clock may trigger minor, temporary pixel layout shifts.
+
 **Chrome extension CSP Warning:** A harmless Content Security Policy warning may appear in your console due to Chrome extensions attempting to hook into the localhost.
+
 **Theme Toggle Flicker:** Persisting theme states via localStorage can cause a brief flash or light-mode styling on high-speed page reloads.
 
 ## Tech Stack
