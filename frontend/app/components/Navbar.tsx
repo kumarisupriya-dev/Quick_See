@@ -63,6 +63,7 @@ export default function Navbar() {
         {name: "GPA Calc", href: "/dashboard/gpa"},
         {name: "AI Copilot", href: "/dashboard/copilot"},
         {name: "Focus Room", href: "/dashboard/focus"},
+        {name: "Flashcards", href: "/dashboard/flashcards"},
     ];
 
     return (
