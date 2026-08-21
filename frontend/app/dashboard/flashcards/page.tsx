@@ -35,6 +35,12 @@ export default function FlashcardsDashboard() {
     const [selectedDeckId, setSelectedDeckId] = useState("");
     const [cardQuestion, setCardQuestion] = useState("");
     const [cardAnswer, setCardAnswer] = useState("");
+
+    // Form inputs: AI generation
+    const [aiTopic, setAiTopic] = useState("");
+    const [selectedAiDeckId, setSelectedAiDeckId] = useState("");
+    const [submittingAi, setSubmittingAi] = useState(false);
+
     const [activeDeck, setActiveDeck] = useState<FlashcardDeck | null>(null);
     const [reviewQueue, setReviewQueue] = useState<Flashcard[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -132,7 +138,7 @@ export default function FlashcardsDashboard() {
                     batch_id: profile.batch_id,
                     subject: deckSubject.trim(),
                     description: deckDescription.trim(),
-                    created_bt: user.id
+                    created_by: user.id
                 });
 
             if (error) throw error;
@@ -174,6 +180,37 @@ export default function FlashcardsDashboard() {
             alert(`Failed to add card: ${err.message}`);
         } finally {
             setSubmittingCard(false);
+        }
+    };
+
+    const handleGenerateAiCards = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!selectedAiDeckId || !aiTopic.trim()) return;
+
+        setSubmittingAi(true);
+        try {
+            const response = await fetch("/api/ai/generate-flashcards", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    deckId: selectedAiDeckId,
+                    topic: aiTopic.trim()
+                })
+            });
+
+            const data = await response.json();
+            if (!response.ok) {
+                throw new Error(data.error || "Failed to generate");
+            }
+
+            setAiTopic("");
+            setSelectedAiDeckId("");
+            alert(`✨ Successfully generated and added ${data.count || 5} cards to your deck!`);
+            await fetchDecks(profile.batch_id);
+        } catch (err: any) {
+            alert(`AI Generation failed: ${err.message}`);
+        } finally {
+            setSubmittingAi(false);
         }
     };
 
@@ -431,6 +468,47 @@ export default function FlashcardsDashboard() {
                             disabled={submittingCard}
                             >
                                 {submittingCard ? "Adding..." : "Add Flashcard"}
+                            </button>
+                        </form>
+                    </div>
+
+                    {/* AI Flashcard Generator form */}
+                    <div className={styles.sidebarCard}>
+                        <h2 className={styles.cardTitle}>✨ Generate Cards with AI</h2>
+                        <form onSubmit={handleGenerateAiCards} className={styles.form}>
+                            <div className={styles.formGroup}>
+                                <label className={styles.label}>Select Target Deck</label>
+                                <select
+                                    className={styles.select}
+                                    value={selectedAiDeckId}
+                                    onChange={(e) => setSelectedAiDeckId(e.target.value)}
+                                    required
+                                >
+                                    <option value="">Choose a deck...</option>
+                                    {decks.map((d) => (
+                                        <option key={d.id} value={d.id}>{d.subject}</option>
+                                    ))}
+                                </select>
+                            </div>
+
+                            <div className={styles.formGroup}>
+                                <label className={styles.label}>Study Topic / Subject Area</label>
+                                <input
+                                    type="text"
+                                    className={styles.input}
+                                    placeholder="e.g. Photosynthesis light reactions"
+                                    value={aiTopic}
+                                    onChange={(e) => setAiTopic(e.target.value)}
+                                    required
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                className={styles.btnSubmit}
+                                disabled={submittingAi}
+                            >
+                                {submittingAi ? "Generating Flashcards..." : "Generate 5 Cards"}
                             </button>
                         </form>
                     </div>
