@@ -3,6 +3,7 @@
 import {useEffect, useState} from "react";
 import Link from "next/link";
 import {usePathname} from "next/navigation";
+import {createClient} from "@/utils/supabase/client";
 import {subscribeToNotifications, getNotificationPermissionState} from "@/utils/push";
 import styles from "./Navbar.module.css";
 
@@ -11,6 +12,9 @@ export default function Navbar() {
     const [permission, setPermission] = useState<string>("default");
     const [submitting, setSubmitting] = useState(false);
     const [theme, setTheme] = useState<"light" | "dark">("light");
+    const [user, setUser] = useState<any>(null);
+
+    const supabase = createClient();
 
     useEffect(() => {
         getNotificationPermissionState().then(setPermission);
@@ -24,6 +28,17 @@ export default function Navbar() {
             setTheme(systemTheme);
             document.documentElement.setAttribute("data-theme", systemTheme);
         }
+
+        supabase.auth.getUser().then(({data: {user}}) => {
+            setUser(user);
+        });
+
+        const {data: {subscription}} = supabase.auth.onAuthStateChange((_event, session) => {
+            setUser(session?.user ?? null);
+        });
+        return () => {
+            subscription.unsubscribe();
+        };
     }, []);
 
     const toggleTheme = () => {
@@ -51,6 +66,11 @@ export default function Navbar() {
         } finally {
             setSubmitting(false);
         }
+    };
+
+    const handleSignOut = async () => {
+        await supabase.auth.signOut();
+        window.location.href = "/login";
     };
 
     const links = [
@@ -109,9 +129,15 @@ export default function Navbar() {
                     >
                         {permission === "granted" ? "🔔" : "🔕"}
                     </button>
-                    <Link href="/login">
-                        <button className={styles.btnPrimary}>Sign In</button>
-                    </Link>
+                    {user ? (
+                        <button className={styles.btnPrimary} onClick={handleSignOut}>
+                            Sign Out
+                        </button>
+                    ) : (
+                        <Link href="/login">
+                            <button className={styles.btnPrimary}>Sign In</button>
+                        </Link>
+                    )}
                 </div>
             </div>
         </nav>
