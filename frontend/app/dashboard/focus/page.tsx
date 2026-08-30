@@ -19,7 +19,7 @@ interface FocusSession {
     location: string;
     session_time: string;
     max_capacity: number;
-    created_by: number;
+    created_by: string;
     created_at: string;
     profiles?: {
         full_name: string;
