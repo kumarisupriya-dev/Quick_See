@@ -1,14 +1,14 @@
 import {NextResponse} from  "next/server";
 import {createClient} from "@supabase/supabase-js";
 import {GoogleGenAI} from "@google/genai";
-async function POST(request: Request) {
+export async function POST(request: Request) {
     try {
         const {deckId, topic} = await request.json();
 
         if (!deckId || !topic) {
             return NextResponse.json({error: "Missing deckId or topic"}, {status: 400});
         }
-        const apiKey = process.env.GEMEINI_API_KEY;;
+        const apiKey = process.env.GEMINI_API_KEY;
         if (!apiKey) {
             return NextResponse.json({
                 error: "Gemini API key is not configured on the server. Please add GEMINI_API_KEY to your .env.local file."
