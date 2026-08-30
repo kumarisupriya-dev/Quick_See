@@ -20,10 +20,10 @@
 
     --primary-raw: 262 83% 58%;
     --primary: hsl(var(--primary-raw));
-    --primary-foreground: hsl(var(--card-foreground-raw));
+    --primary-foreground: hsl(0 0% 100%);
 
     --secondary-raw: 220 14% 90%;
-    --secondary: hsl(var(--primary-raw));
+    --secondary: hsl(var(--secondary-raw));
     --secondary-foreground: hsl(220 39% 10%);
 
     --accent-raw: 142 76% 36%;
