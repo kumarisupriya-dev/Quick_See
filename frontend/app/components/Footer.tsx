@@ -21,7 +21,7 @@ export default function Footer() {
                     </li>
                     <li>
                         <a
-                        href="https://github.com"
+                        href="https://github.com/kumarisupriya-dev/Quick_See"
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.link}
