@@ -1,6 +1,6 @@
 "use client";
 
-import {use, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import Link from "next/link";
 import {usePathname} from "next/navigation";
 import {createClient} from "@/utils/supabase/client";
@@ -71,14 +71,14 @@ export default function Navbar() {
         {name: "Checklist", href: "/checklist"},
     ];
     const secondaryTools = [
-        {name: "AI Academic Copilot", href: "/dashboard/copilot", icon: "✦"},
-        {name: "Study Resources & Notes", href: "/dashboard/resources", icon: "📁"},
-        {name: "Announcements & Polls", href: "/dashboard/announcements", icon: "📢"},
-        {name: "GPA Calculator & Goals", href: "/dashboard/gpa", icon: "📊"},
-        {name: "Focus Room & Pomodoro", href: "/dashboard/focus", icon: "⏱"},
-        {name: "Flashcards Decks", href: "/dashboard/flashcards", icon: "🗂"},
-        {name: "LMS Coursework Sync", href: "/dashboard/lms", icon: "🔄"},
-        {name: "Schedule Reschedules", href: "/dashboard/reschedule", icon: "📅"},
+        {name: "AI Academic Copilot", href: "/dashboard/copilot", icon: "•"},
+        {name: "Study Resources & Notes", href: "/dashboard/resources", icon: "•"},
+        {name: "Announcements & Polls", href: "/dashboard/announcements", icon: "•"},
+        {name: "GPA Calculator & Goals", href: "/dashboard/gpa", icon: "•"},
+        {name: "Focus Room & Pomodoro", href: "/dashboard/focus", icon: "•"},
+        {name: "Flashcards Decks", href: "/dashboard/flashcards", icon: "•"},
+        {name: "LMS Coursework Sync", href: "/dashboard/lms", icon: "•"},
+        {name: "Schedule Reschedules", href: "/dashboard/reschedule", icon: "•"},
     ];
     return (
         <>
@@ -203,7 +203,7 @@ export default function Navbar() {
             ) : (
                 <Link
                 href="/login"
-                className={styles.btnSingIn}
+                className={styles.btnSignIn}
                 onClick={() => setDrawerOpen(false)}
                 >
                     Sign In

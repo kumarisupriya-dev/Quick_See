@@ -9,25 +9,6 @@
     margin: 0 auto;
     flex: 1;
 }
-.badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: var(--secondary);
-    border: 1px solid var(--border);
-    color: var(--foreground);
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding: 0.35rem 0.85rem;
-    border-radius: var(--radius-sm);
-    margin-bottom: 1.75rem;
-}
-.badgeDot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: var(--accent);
-}
 .title {
     font-size: 2.75rem;
     font-weight: 800;

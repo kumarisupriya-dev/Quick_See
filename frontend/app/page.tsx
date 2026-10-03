@@ -5,10 +5,6 @@ export default function Home() {
   return (
       <div className="flex-1 flex flex-col justify-between">
         <section className={styles.hero}>
-          <div className={styles.badge}>
-            <span className={styles.badgeDot}/>
-              <span>Synchronous Academic</span>
-          </div>
           <h1 className={styles.title}>Academic Schedules, <br/>
           <span className={styles.titleAccent}>built without manual entry.</span></h1>
           <p className={styles.subtitle}>
