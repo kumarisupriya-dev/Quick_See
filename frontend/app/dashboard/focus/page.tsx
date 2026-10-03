@@ -43,7 +43,6 @@ export default function FocusSessionsPage() {
     const [isBreak, setIsBreak] = useState(false);
 
     const supabase = createClient();
-
     const fetchSessions = async (batchId: string) => {
         try {
             const {data, error} = await supabase
@@ -108,11 +107,11 @@ export default function FocusSessionsPage() {
             }, 1000);
         } else if (timeLeft === 0) {
             if (!isBreak) {
-                alert("🔔 Study session complete! Take a 5-minute break.");
+                alert("Study session complete! Take a 5-minute break.");
                 setIsBreak(true);
                 setTimeLeft(5 * 60);
             } else {
-                alert("💪 Break finished! Time to focus for another 25 minutes.");
+                alert("Break finished! Time to focus for another 25 minutes.");
                 setIsBreak(false);
                 setTimeLeft(25 * 60);
             }
@@ -170,7 +169,7 @@ export default function FocusSessionsPage() {
             setSessionTime("");
             setMaxCapacity(6);
 
-            alert("📅 Focus Study session created!");
+            alert("Focus Study session created!");
             await fetchSessions(profile.batch_id);
         } catch (err: any) {
             alert(`Failed to schedule study group: ${err.message}`);
@@ -229,9 +228,8 @@ export default function FocusSessionsPage() {
                 </p>
             </div>
             <div className={styles.grid}>
-                {/* Main panel: Active focus co-working schedules */}
                 <div>
-                    <h2 className={styles.sectionTitle}>📅 Active Study Sessions</h2>
+                    <h2 className={styles.sectionTitle}>Active Study Sessions</h2>
                     {sessions.length === 0 ? (
                         <div className={styles.emptyState}>
                             No study sessions scheduled yet. Create one on the right to invite your cohort!
@@ -252,7 +250,7 @@ export default function FocusSessionsPage() {
                                                 <span
                                                 className={`${styles.capacityBadge} ${isFull ? styles.capacityFull : ""}`}
                                                 >
-                                                    👥 {count} / {session.max_capacity} Seats
+                                                    {count} / {session.max_capacity} Seats
                                                 </span>
                                                 <h3 className={styles.sessionTopic}>{session.topic}</h3>
                                             </div>
@@ -260,10 +258,10 @@ export default function FocusSessionsPage() {
                                                 <p className={styles.sessionDesc}>{session.description}</p>
                                             )}
                                             <div className={styles.sessionDetails}>
-                                                <span>📍 Location: {session.location}</span>
+                                                <span>Location: {session.location}</span>
                                                 <span>•</span>
                                                 <span>
-                                                    🕒 Time: {new Date(session.session_time).toLocaleString()}
+                                                    Time: {new Date(session.session_time).toLocaleString()}
                                                 </span>
                                                 <span>•</span>
                                                 <span>By: {session.profiles?.full_name || "Student"}</span>
@@ -304,14 +302,12 @@ export default function FocusSessionsPage() {
                         </div>
                     )}
                 </div>
-                {/* Sidebar: Pomodoro and creation form */}
                 <div className={styles.sidebar}>
-                    {/* Pomodoro clock card */}
                     <div className={styles.sidebarCard}>
-                        <h2 className={styles.cardTitle}>⏱️ Focus Pomodoro Timer</h2>
+                        <h2 className={styles.cardTitle}>Focus Pomodoro Timer</h2>
                         <div className={styles.pomoWidget}>
                             <span className={styles.pomoStatus}>
-                                {isBreak ? "🌸 Break Interval" : "📖 Study Interval"}
+                                {isBreak ? "Break Interval" : "Study Interval"}
                             </span>
                             <div className={`${styles.pomoTimer} ${isBreak ? styles.pomotimerbreak : ""}`}>
                                 {formatTimerText()}
@@ -334,7 +330,6 @@ export default function FocusSessionsPage() {
                             </div>
                         </div>
                     </div>
-                    {/* Creation form card */}
                     <div className={styles.sidebarCard}>
                         <h2 className={styles.cardTitle}>Schedule Study Group</h2>
                         <form onSubmit={handleCreateSession} className={styles.form}>

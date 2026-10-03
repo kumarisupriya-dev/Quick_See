@@ -227,7 +227,6 @@ export default function DashboardPage() {
     }
     const activeDayClasses = getActiveDayClasses();
     const weeklyGrouped = getWeeklyGroupedClasses();
-
     return (
         <div className={styles.container}>
             <div className={styles.headerRow}>
@@ -237,11 +236,10 @@ export default function DashboardPage() {
                     </h2>
                     {profile?.batches && (
                         <div className={styles.batchBadge}>
-                            🎓 {profile.batches.departments.name} — Class of {profile.batches.graduation_year} ({profile.batches.section_name}
+                            {profile.batches.departments.name} - Class of {profile.batches.graduation_year} ({profile.batches.section_name})
                         </div>
                     )}
                 </div>
-                {/* View mod toggle */}
                 <div className={styles.viewToggle}>
                     <button
                     className={`${styles.toggleBtn} ${viewMode === "daily" ? styles.toggleBtnActive : ""}`}
@@ -260,7 +258,6 @@ export default function DashboardPage() {
             {viewMode === "daily" ? (
                 <div className={styles.dashboardLayout}>
                     <div className={styles.mainContent}>
-                        {/* Day selector strip */}
                         <div className={styles.daySelector}>
                             {datesList.map((date, idx) => {
                                 const isActive = date.toDateString() === selectedDate.toDateString();
@@ -276,11 +273,9 @@ export default function DashboardPage() {
                                 );
                             })}
                         </div>
-                        {/* Daily schedule list */}
                         <div className={styles.scheduleList}>
                             {activeDayClasses.length === 0 ? (
                                 <div className={styles.emptyState}>
-                                    <div className={styles.emptyStateIcon}>☕</div>
                                     <h3 className={styles.emptyStateTitle}>No Classes Today</h3>
                                     <p className={styles.emptyStateDesc}>
                                         Enjoy your day off, catch up on studies, or update tomorrow's checklist!
@@ -294,7 +289,6 @@ export default function DashboardPage() {
 
                                     return (
                                         <div key={schedule.id} className={styles.card}>
-                                            {/* Time */}
                                             <div className={styles.timeContainer}>
                                                 <span className={styles.timeStart}>
                                                     {isRescheduled && override.new_start_time
@@ -308,7 +302,6 @@ export default function DashboardPage() {
                                                     : schedule.end_time.slice(0, 5)}
                                                 </span>
                                             </div>
-                                            {/* Details */}
                                             <div className={styles.classDetails}>
                                                 <h4 className={styles.subjectName}>
                                                     {schedule.subject_name}
@@ -318,14 +311,13 @@ export default function DashboardPage() {
                                                 </span>
                                                 {isRescheduled && (
                                                     <div className={styles.reschedDetails}>
-                                                        ⚠️ Rescheduled from original time ({schedule.start_time.slice(0, 5)})
+                                                        Rescheduled from original time ({schedule.start_time.slice(0, 5)})
                                                     </div>
                                                 )}
                                             </div>
-                                            {/* Status and location */}
                                             <div className="flex flex-col items-start gap-2 sm:items-end">
                                                 <div className={styles.locationContainer}>
-                                                    📍 Room{" "}
+                                                    Room{" "}
                                                     {isRescheduled && override.new_room
                                                     ? override.new_room
                                                     : schedule.room_number}
@@ -347,18 +339,17 @@ export default function DashboardPage() {
                             )}
                         </div>
                     </div>
-                    {/* Quick actions panel */}
                     <div className={styles.sideContent}>
                         <div className={styles.quickActions}>
                             <h3 className={styles.actionTitle}>Quick Actions</h3>
                             <Link href="/ai-parser" className={`${styles.actionButton} ${styles.actionButtonPrimary}`}>
-                                🤖 AI Syllabus Uplaod
+                                AI Syllabus Upload
                             </Link>
                             <Link href="/checklist" className={styles.actionButton}>
-                                🎒 Daily Item Checklist
+                                Daily Item Checklist
                             </Link>
                             <Link href="/dashboard/reschedule" className={styles.actionButton}>
-                                📅 Report Cancel/Reschedule
+                                Report Cancel/Reschedule
                             </Link>
                         </div>
                     </div>
@@ -381,7 +372,7 @@ export default function DashboardPage() {
                                                 {cls.start_time.slice(0, 5)} - {cls.end_time.slice(0, 5)}
                                             </span>
                                             <h4 className={styles.weeklySubject}>{cls.subject_name}</h4>
-                                            <span className={styles.weeklyRoom}>📍 Rm {cls.room_number}</span>
+                                            <span className={styles.weeklyRoom}> Room {cls.room_number}</span>
                                         </div>
                                     ))
                                 )}

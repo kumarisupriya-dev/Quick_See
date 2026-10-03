@@ -224,7 +224,6 @@ export default function ChecklistPage() {
             </div>
         );
     }
-
     return (
         <div className={styles.container}>
             <div className={styles.headerRow}>
@@ -234,9 +233,7 @@ export default function ChecklistPage() {
                         Crowdsourced daily requirements. Add and verify what to bring for class today.
                     </p>
                 </div>
-                {/* Date Selection */}
                 <div className={styles.datePickerRow}>
-                    📅
                     <input
                     type="date"
                     className={styles.dateInput}
@@ -248,7 +245,7 @@ export default function ChecklistPage() {
             {errorMsg && <div className={styles.errorAlert}>{errorMsg}</div>}
             {schedules.length === 0 ? (
                 <div className={styles.noClassesCard}>
-                    ☕ No classes are scheduled on this day. Take a break!
+                    No classes are scheduled on this day. Take a break!
                 </div>
             ) : (
                 schedules.map((course) => {
@@ -258,7 +255,7 @@ export default function ChecklistPage() {
                             <div className={styles.classHeader}>
                                 <h3 className={styles.className}>{course.subject_name}</h3>
                                 <span className={styles.classTime}>
-                                    📍 Room {course.room_number} ({course.start_time.slice(0, 5)} - {course.end_time.slice(0,5)})
+                                    Room {course.room_number} ({course.start_time.slice(0, 5)} - {course.end_time.slice(0,5)})
                                 </span>
                             </div>
                             <div className={styles.itemList}>
@@ -274,7 +271,6 @@ export default function ChecklistPage() {
                                             key={item.id}
                                             className={`${styles.itemRow} ${item.is_completed ? styles.itemRowCompleted : ""} ${isReportedHeavy ? styles.itemRowReported : ""}`}
                                             >
-                                                {/* Checkbox Status */}
                                                 <label className={styles.itemLabel}>
                                                     <input
                                                     type="checkbox"
@@ -293,14 +289,13 @@ export default function ChecklistPage() {
                                                         )}
                                                     </span>
                                                 </label>
-                                                {/* Peer upvote and report buttons */}
                                                 <div className={styles.actionButtons}>
                                                     <button
                                                     type="button"
                                                     className={styles.btnVote}
                                                     onClick={() => handleUpvote(item.id, item.upvotes)}
                                                     >
-                                                        👍 {item.upvotes}
+                                                        ▲ {item.upvotes}
                                                     </button>
                                                     <button
                                                     type="button"
@@ -308,7 +303,7 @@ export default function ChecklistPage() {
                                                     onClick={() => handleReport(item.id, item.reported_count)}
                                                     title="Report incorrect info"
                                                     >
-                                                        ⚠️ {item.reported_count > 0 && item.reported_count}
+                                                        {item.reported_count > 0 && item.reported_count}
                                                     </button>
                                                 </div>
                                             </div>
@@ -316,7 +311,6 @@ export default function ChecklistPage() {
                                     })
                                 )}
                             </div>
-                            {/* Inline form to add checklist item */}
                             <div className={styles.addItemRow}>
                                 <input
                                 type="text"

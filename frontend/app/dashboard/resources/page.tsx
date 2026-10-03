@@ -250,10 +250,8 @@ export default function StudyResourcesDashboard() {
             </div>
 
             <div className={styles.grid}>
-                {/* Main content area */}
                 <div>
-                    <h2 className={styles.sectionTitle}>📁 Shared Course Materials</h2>
-                    {/* Navigation tabs */}
+                    <h2 className={styles.sectionTitle}>Shared Course Materials</h2>
                     <div className={styles.tabContainer}>
                         {["all", "notes", "slides", "papers", "other"].map((tab) => (
                             <button
@@ -289,13 +287,12 @@ export default function StudyResourcesDashboard() {
                                         </div>
                                     </div>
                                     <div className={styles.actions}>
-                                        {/* Upvote Button */}
                                         <button
                                         type="button"
                                         className={`${styles.btnVote} ${votedResources[res.id] ? styles.btnVoteActive : ""}`}
                                         onClick={() => handleUpvote(res)}
                                         >
-                                            👍 {res.upvotes}
+                                            ▲ {res.upvotes}
                                         </button>
                                         <a
                                         href={res.file_url}
@@ -311,11 +308,9 @@ export default function StudyResourcesDashboard() {
                         </div>
                     )}
                 </div>
-                {/* Sidebar area: Countdown widget & upload form */}
                 <div className={styles.sidebar}>
-                    {/* Countdown clock widget */}
                     <div className={styles.sidebarCard}>
-                        <h2 className={styles.cardTitle}>⏰ Upcoming Exam Countdowns</h2>
+                        <h2 className={styles.cardTitle}>Upcoming Exam Countdowns</h2>
                         <div className={styles.countdownContainer}>
                             {exams.map((exam) => (
                                 <div key={exam.id} className={styles.countdownCard}>
@@ -326,9 +321,8 @@ export default function StudyResourcesDashboard() {
                             ))}
                         </div>
                     </div>
-                    {/* Upload / Resource link submission form */}
                     <div className={styles.sidebarCard}>
-                        <h2 className={styles.cardTitle}>📤 Share Study Material</h2>
+                        <h2 className={styles.cardTitle}>Share Study Material</h2>
                         <form onSubmit={handleShareResource} className={styles.form}>
                             <div className={styles.formGroup}>
                                 <label className={styles.label}>Material Title</label>
