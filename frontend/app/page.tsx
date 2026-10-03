@@ -6,40 +6,46 @@ export default function Home() {
       <div className="flex-1 flex flex-col justify-between">
         <section className={styles.hero}>
           <div className={styles.badge}>
-            <span className={styles.badgePulse}></span>
-            Introducing the Academic Co-Pilot
+            <span className={styles.badgeDot}/>
+              <span>Synchronous Academic</span>
           </div>
-          <h1 className={styles.title}>
-            Academic schedules, <br />
-            <span className={styles.titleAccent}>Completely Automated</span>
-          </h1>
-          <p className={styles.title}>
-            Say goodbye to manual schedule entries. Upload a syllabus and get instant schedules.
-            Coordinate class cancellations and checklist items live with your batch.
+          <h1 className={styles.title}>Academic Schedules, <br/>
+          <span className={styles.titleAccent}>built without manual entry.</span></h1>
+          <p className={styles.subtitle}>
+            Upload your raw timetable or syllabus. Quick See automatically builds your calendar, syncs live class cancellations with classmates, and sends nightly preparation alerts.
           </p>
           <div className={styles.ctaGroup}>
             <Link href="/onboarding" className={styles.btnPrimary}>
-              Get Stated
+              Get Started
             </Link>
             <Link href="/dashboard" className={styles.btnSecondary}>
-              View Demo Dashboard
+              View Dashboard
             </Link>
           </div>
         </section>
-        <section className={styles.featuresGrid}>
-          <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>🤖</div>
-            <h3 className={styles.featureTitle}>AI Syllabus</h3>
-            <p className={styles.featureDesc}>
-              Upload PDF course timetables or syllabi. Our AI extracts rooms, times, exam schedules, and details in seconds.
-            </p>
-          </div>
-          <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>🎒</div>
-            <h3 className={styles.featureTitle}>Pack Your Bag Alert</h3>
-            <p className={styles.featureDesc}>
-              Get a tailored nightly checklist telling you exactly what lab coats, manuals, or homework copies to pack for tomorrow.
-            </p>
+        <section className={styles.bentoSection}>
+          <div className={styles.bentoGrid}>
+            <div className={styles.bentoCard}>
+              <div className={styles.cardHeader}>
+                <span className={styles.cardTag}>Parsing Engine</span>
+                <h3 className={styles.cardTitle}>Instant Timetable extraction</h3>
+                <p className={styles.cardDesc}>Drop any image or PDF syllabus. Extracts lecture times, room numbers, and course codes directly into structured tables.</p>
+              </div>
+            </div>
+            <div className={styles.bentoCard}>
+              <div className={styles.cardHeader}>
+                <span className={styles.cardTag}>Cohort Sync</span>
+                <h3 className={styles.cardTitle}>Real-Time Reschedules</h3>
+                <p className={styles.cardDesc}>Class Representatives post cancellations or swaps. Every student in the batch receives real-time calendar updates instantly.</p>
+              </div>
+            </div>
+            <div className={styles.bentoCard}>
+              <div className={styles.cardHeader}>
+                <span className={styles.cardTag}>Alert Engine</span>
+                <h3 className={styles.cardTitle}>Nightly Prep Alerts</h3>
+                <p className={styles.cardDesc}>Automatic 9:00 PM notifications compiling tomorrow's timetable and tell you which lab coats, manuals, and homework copies to pack.</p>
+              </div>
+            </div>
           </div>
         </section>
       </div>
