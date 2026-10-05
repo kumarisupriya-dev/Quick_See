@@ -284,7 +284,7 @@ export default function ChecklistPage() {
                                                         {item.item_description}
                                                         {isReportedHeavy && (
                                                             <span style={{color: "var(--danger)", fontSize: "0.75rem", marginLeft: "0.5rem", fontWeight: "700"}}>
-                                                                (⚠️ Reported Incorrect)
+                                                                (Reported Incorrect)
                                                             </span>
                                                         )}
                                                     </span>
@@ -295,7 +295,10 @@ export default function ChecklistPage() {
                                                     className={styles.btnVote}
                                                     onClick={() => handleUpvote(item.id, item.upvotes)}
                                                     >
-                                                        ▲ {item.upvotes}
+                                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{display: "inline-block", marginRight: "4px"}}>
+                                                            <polyline points="18 15 12 9 6 15"/>
+                                                        </svg>
+                                                        {item.upvotes}
                                                     </button>
                                                     <button
                                                     type="button"
@@ -303,7 +306,11 @@ export default function ChecklistPage() {
                                                     onClick={() => handleReport(item.id, item.reported_count)}
                                                     title="Report incorrect info"
                                                     >
-                                                        {item.reported_count > 0 && item.reported_count}
+                                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{display: "inline-block", marginRight: "4px"}}>
+                                                            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                                            <line x1="4" y1="22" x2="4" y2="15"/>
+                                                        </svg>
+                                                        {item.reported_count > 0 ? item.reported_count: "Flag"}
                                                     </button>
                                                 </div>
                                             </div>

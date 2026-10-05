@@ -163,7 +163,7 @@ export default function GpaCalculator() {
                 .insert(inserts);
 
             if (error) throw error;
-            alert("💾 GPA grades saved and synced to database successfully!");
+            alert("GPA grades saved and synced to database successfully!");
 
             const {data: savedGrades} = await supabase
                 .from("gpa_records")
@@ -219,10 +219,9 @@ export default function GpaCalculator() {
                         Track your current semester grades and plan your target cumulative scores.
                     </p>
                 </div>
-                {/* GPA stats overview cards */}
                 <div className={styles.gpaStatsContainer}>
                     <div className={styles.statCard}>
-                        <span className={styles.statLabel}>Caculated SGPA</span>
+                        <span className={styles.statLabel}>Calculated SGPA</span>
                         <span className={styles.statVal}>{calculatedGpa.toFixed(2)}</span>
                         <span className={styles.statSub}>Semester Quality GPA</span>
                     </div>
@@ -238,7 +237,6 @@ export default function GpaCalculator() {
                     </div>
                 </div>
                 <div className={styles.grid}>
-                    {/* Main panel: calculator input rows */}
                     <div className={styles.mainPanel}>
                         <div className={styles.calcCard}>
                             <div className={styles.semesterHeader}>
@@ -300,7 +298,7 @@ export default function GpaCalculator() {
                             )}
                             <div className={styles.semActions}>
                                 <span style={{fontSize: "0.8rem", opacity: 0.5}}>
-                                    * Auto-populated from batch scheudles if first load is empty.
+                                    * Auto-populated from batch schedules if first load is empty.
                                 </span>
                                 <button
                                 type="button"
@@ -313,7 +311,6 @@ export default function GpaCalculator() {
                             </div>
                         </div>
                     </div>
-                    {/* Sidebar: CGPA total target projecter */}
                     <div className={styles.sidebar}>
                         <div className={styles.sidebarCard}>
                             <h2 className={styles.cardTitle}>Cumulative CGPA Projecter</h2>
@@ -365,7 +362,6 @@ export default function GpaCalculator() {
                                     ))}
                                 </select>
                             </div>
-                            {/* Projection result */}
                             <div className={styles.goalResult}>
                                 <div className={styles.goalTitle}>Required Average GPA:</div>
                                 <div className={styles.goalTarget}>
@@ -383,7 +379,7 @@ export default function GpaCalculator() {
                                 </div>
                                 <p className={styles.goalDesc}>
                                     {requiredGpa > 4.00 ? "⚠️ You need average grades exceeding 4.00 to hit this target CGPA. Adjust your target lower." :
-                                    `🎓 You must maintain an average SGPA of ${requiredGpa.toFixed(2)} in your remaining semesters to achieve your goal.`}
+                                    `You must maintain an average SGPA of ${requiredGpa.toFixed(2)} in your remaining semesters to achieve your goal.`}
                                 </p>
                             </div>
                         </div>

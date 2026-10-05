@@ -139,7 +139,6 @@ export default function ReschedulePage() {
             setSubmitting(false);
         }
     };
-
     if (loading) {
         return (
             <div className={styles.loader}>
@@ -148,7 +147,6 @@ export default function ReschedulePage() {
             </div>
         );
     }
-
     return (
         <div className={styles.container}>
             <div className={styles.card}>
@@ -158,10 +156,9 @@ export default function ReschedulePage() {
                         Mark a class as canceled or change its room/time for a specific day
                     </p>
                 </div>
-
                 {userRole === "student" && (
                     <div className={styles.roleAlert}>
-                        🔒 <strong>Class Rep Permissions Required:</strong> Your current role is <strong>Student</strong>
+                        <strong>Class Rep Permissions Required:</strong> Your current role is <strong>Student</strong>
                         Only Class Representatives can post updates.
                         <br />
                         <button
@@ -169,7 +166,7 @@ export default function ReschedulePage() {
                         className={styles.btnPromote}
                         style={{marginTop: "0.5rem"}}
                         >
-                            👑 Promote Me to Class Rep (Testing Mode)
+                            Promote Me to Class Rep (Testing Mode)
                         </button>
                     </div>
                 )}
@@ -184,7 +181,6 @@ export default function ReschedulePage() {
                     </div>
                 )}
                 <form onSubmit={handleSubmit} className={styles.form}>
-                    {/* Select class */}
                     <div className={styles.formGroup}>
                         <label className={styles.label}>Select Class</label>
                         <select
@@ -201,7 +197,6 @@ export default function ReschedulePage() {
                             ))}
                         </select>
                     </div>
-                    {/* Date selector */}
                     <div className={styles.formGroup}>
                         <label className={styles.label}>Target Date</label>
                         <input
@@ -212,7 +207,6 @@ export default function ReschedulePage() {
                         required
                         />
                     </div>
-                    {/* Cancel Checkbox */}
                     <label className={styles.checkboxContainer}>
                         <input
                         type="checkbox"
@@ -224,7 +218,6 @@ export default function ReschedulePage() {
                             Class is Canceled
                         </span>
                     </label>
-                    {/* Reschedule fields (only if not canceled) */}
                     {!isCanceled && (
                         <div className={styles.rescheduleFields}>
                             <div className={styles.timeRow}>

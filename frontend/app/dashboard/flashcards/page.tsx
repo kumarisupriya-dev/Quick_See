@@ -35,12 +35,9 @@ export default function FlashcardsDashboard() {
     const [selectedDeckId, setSelectedDeckId] = useState("");
     const [cardQuestion, setCardQuestion] = useState("");
     const [cardAnswer, setCardAnswer] = useState("");
-
-    // Form inputs: AI generation
     const [aiTopic, setAiTopic] = useState("");
     const [selectedAiDeckId, setSelectedAiDeckId] = useState("");
     const [submittingAi, setSubmittingAi] = useState(false);
-
     const [activeDeck, setActiveDeck] = useState<FlashcardDeck | null>(null);
     const [reviewQueue, setReviewQueue] = useState<Flashcard[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -146,7 +143,7 @@ export default function FlashcardsDashboard() {
             setDeckSubject("");
             setDeckDescription("");
 
-            alert("📁 New Study deck created!");
+            alert("New Study deck created!");
             await fetchDecks(profile.batch_id);
         } catch (err: any) {
             alert(`Failed to create deck: ${err.message}`);
@@ -174,7 +171,7 @@ export default function FlashcardsDashboard() {
             setCardQuestion("");
             setCardAnswer("");
 
-            alert("⚡ Card added to deck!");
+            alert("Card added to deck!");
             await fetchDecks(profile.batch_id);
         } catch (err: any) {
             alert(`Failed to add card: ${err.message}`);
@@ -205,7 +202,7 @@ export default function FlashcardsDashboard() {
 
             setAiTopic("");
             setSelectedAiDeckId("");
-            alert(`✨ Successfully generated and added ${data.count || 5} cards to your deck!`);
+            alert(`Successfully generated and added ${data.count || 5} cards to your deck!`);
             await fetchDecks(profile.batch_id);
         } catch (err: any) {
             alert(`AI Generation failed: ${err.message}`);
@@ -252,7 +249,6 @@ export default function FlashcardsDashboard() {
             }
         }, 3000);
     };
-
     if (loading) {
         return (
             <div className={styles.loader}>
@@ -261,7 +257,6 @@ export default function FlashcardsDashboard() {
             </div>
         );
     }
-
     return (
         <div className={styles.container}>
             <div className={styles.header}>
@@ -271,12 +266,11 @@ export default function FlashcardsDashboard() {
                 </p>
             </div>
             <div className={styles.grid}>
-                {/* Main panel */}
                 <div>
                     {activeDeck ? (
                         <div className={styles.playerCard}>
                             <div className={styles.playerHeader}>
-                                <span>📖 Deck: {activeDeck.subject}</span>
+                                <span>Deck: {activeDeck.subject}</span>
                                 <span>
                                     Progress: {masteredCount} / {originalCount} Mastered (
                                     {reviewQueue.length} remaining)
@@ -284,7 +278,7 @@ export default function FlashcardsDashboard() {
                             </div>
                             {reviewQueue.length === 0 ? (
                                 <div style={{textAlign: "center", padding: "3rem"}}>
-                                    <h3 style={{fontSize: "1.5rem", marginBottom: "0.5rem"}}>🎉 Mastery Achieved!</h3>
+                                    <h3 style={{fontSize: "1.5rem", marginBottom: "0.5rem"}}>Mastery Achieved!</h3>
                                     <p style={{opacity: 0.6, fontSize: "0.9rem", marginBottom: "1.5rem"}}>
                                         You have successfully reviewed all flashcards in this set.
                                     </p>
@@ -298,7 +292,6 @@ export default function FlashcardsDashboard() {
                                 </div>
                             ) : (
                                 <>
-                                    {/* Flippable flashcard wrapper */}
                                     <div
                                     className={styles.flipContainer}
                                     onClick={() => setIsFlipped(!isFlipped)}
@@ -317,7 +310,7 @@ export default function FlashcardsDashboard() {
                                     <div className={styles.playerControls}>
                                         <span className={styles.btnText}>
                                             {isFlipped ? "How well did you know this answer?"
-                                            : "💡 Click the card to reveal the answer"}
+                                            : "Click the card to reveal the answer"}
                                         </span>
                                         {isFlipped && (
                                             <div className={styles.masteryButtons}>
@@ -358,7 +351,7 @@ export default function FlashcardsDashboard() {
                         </div>
                     ) : (
                         <>
-                        <h2 className={styles.sectionTitle}>📁 Cohort Flashcard Decks</h2>
+                        <h2 className={styles.sectionTitle}>Cohort Flashcard Decks</h2>
                             {decks.length === 0 ? (
                                 <div className={styles.emptyState}>
                                     No flashcard decks shared yet. Create the deck on the right!
@@ -388,9 +381,7 @@ export default function FlashcardsDashboard() {
                         </>
                     )}
                 </div>
-                {/* Sidebar area: creator panels */}
                 <div className={styles.sidebar}>
-                    {/* Create deck form */}
                     <div className={styles.sidebarCard}>
                         <h2 className={styles.cardTitle}>Create Deck</h2>
                         <form onSubmit={handleCreateDeck} className={styles.form}>
@@ -423,7 +414,6 @@ export default function FlashcardsDashboard() {
                             </button>
                         </form>
                     </div>
-                    {/* Create card form */}
                     <div className={styles.sidebarCard}>
                         <h2 className={styles.cardTitle}>Add Card to Deck</h2>
                         <form onSubmit={handleCreateCard} className={styles.form}>
@@ -471,10 +461,8 @@ export default function FlashcardsDashboard() {
                             </button>
                         </form>
                     </div>
-
-                    {/* AI Flashcard Generator form */}
                     <div className={styles.sidebarCard}>
-                        <h2 className={styles.cardTitle}>✨ Generate Cards with AI</h2>
+                        <h2 className={styles.cardTitle}>Generate Cards with AI</h2>
                         <form onSubmit={handleGenerateAiCards} className={styles.form}>
                             <div className={styles.formGroup}>
                                 <label className={styles.label}>Select Target Deck</label>
@@ -490,7 +478,6 @@ export default function FlashcardsDashboard() {
                                     ))}
                                 </select>
                             </div>
-
                             <div className={styles.formGroup}>
                                 <label className={styles.label}>Study Topic / Subject Area</label>
                                 <input
@@ -502,7 +489,6 @@ export default function FlashcardsDashboard() {
                                     required
                                 />
                             </div>
-
                             <button
                                 type="submit"
                                 className={styles.btnSubmit}

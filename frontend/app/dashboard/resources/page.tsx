@@ -195,7 +195,7 @@ export default function StudyResourcesDashboard() {
             setFileUrl("");
             setSelectedSchedule("");
 
-            alert("🎉 Material shared with your class cohort successfully!");
+            alert("Material shared with your class cohort successfully!");
             await fetchResources(profile.batch_id);
         } catch (err: any) {
             alert(`Failed to share: ${err.message || err}`);
@@ -206,7 +206,7 @@ export default function StudyResourcesDashboard() {
 
     const handleUpvote = async (resource: StudyResource) => {
         if (votedResources[resource.id]) {
-            alert("👍 You have already upvoted this resource!");
+            alert("You have already upvoted this resource!");
             return;
         }
 
@@ -231,7 +231,6 @@ export default function StudyResourcesDashboard() {
         if (activeTab === "all") return true;
         return res.category === activeTab;
     });
-
     if (loading) {
      return (
          <div className={styles.loader}>
@@ -263,7 +262,6 @@ export default function StudyResourcesDashboard() {
                             </button>
                         ))}
                     </div>
-
                     {filteredResources.length === 0 ? (
                         <div className={styles.emptyState}>
                             No resources shared under this category yet. Be the first to share one!
@@ -292,7 +290,10 @@ export default function StudyResourcesDashboard() {
                                         className={`${styles.btnVote} ${votedResources[res.id] ? styles.btnVoteActive : ""}`}
                                         onClick={() => handleUpvote(res)}
                                         >
-                                            ▲ {res.upvotes}
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{display: "inline-block", marginRight: "4px"}}>
+                                                <polyline points="18 15 12 9 6 15"/>
+                                            </svg>
+                                            {res.upvotes}
                                         </button>
                                         <a
                                         href={res.file_url}

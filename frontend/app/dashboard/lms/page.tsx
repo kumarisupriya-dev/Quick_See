@@ -148,7 +148,7 @@ export default function LmsDashboard() {
              localStorage.setItem("lms_demo", String(demoMode));
 
              loadCourseworkList(demoMode);
-             alert("🔒 LMS settings saved locally and coursework synced successfully!");
+             alert("LMS settings saved locally and coursework synced successfully!");
          } catch (err) {
              console.error("Save config failed:", err);
          } finally {
@@ -159,7 +159,7 @@ export default function LmsDashboard() {
     const handleSyncToChecklist = async (item: LmsCoursework) => {
         const scheduleId = syncClassMap[item.id];
         if (!scheduleId) {
-            alert("⚠️ Please associate this assignment with a scheduled class first!");
+            alert("Please associate this assignment with a scheduled class first!");
             return;
         }
         const selectedSchedule = schedules.find(s => s.id === scheduleId);
@@ -179,12 +179,11 @@ export default function LmsDashboard() {
             if (error) throw error;
 
             setSyncedItems(prev => ({...prev, [item.id]: true}));
-            alert(`🎉 Synced "${item.title}" directly to the batch checklist!`);
+            alert(`Synced "${item.title}" directly to the batch checklist!`);
         } catch (err: any) {
             alert(`Failed to sync: ${err.message || err}`);
         }
     };
-
     if (loading) {
         return (
             <div className={styles.loader}>
@@ -193,17 +192,15 @@ export default function LmsDashboard() {
             </div>
         );
     }
-
     return (
         <div className={styles.container}>
             <div className={styles.header}>
                 <h1 className={styles.title}>LMS Coursework Syncer</h1>
                 <p className={styles.subtitle}>
-                    Synchronize Canvas, Blackboard, or Moodle deadlines directly to your class crowdsourced cheklist.
+                    Synchronize Canvas, Blackboard, or Moodle deadlines directly to your class crowdsourced checklist.
                 </p>
             </div>
             <div className={styles.grid}>
-                {/* Configuration Panel */}
                 <div className={styles.configCard}>
                     <h2 className={styles.cardTitle}>LMS Portal Credentials</h2>
                     <form onSubmit={handleSaveConfig} className={styles.form}>
@@ -265,12 +262,16 @@ export default function LmsDashboard() {
                         </button>
                     </form>
                 </div>
-                {/* Coursework Viewer and Sync Action */}
                 <div className={styles.courseworkContainer}>
                     <h2 className={styles.cardTitle}>Upcoming Deadlines ({coursework.length})</h2>
                     {coursework.length === 0 ? (
                         <div className={styles.emptyState}>
-                            <span className={styles.emptyIcon}>🎓</span>
+                            <span className={styles.emptyIcon}>
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                                </svg>
+                            </span>
                             <h3 className={styles.emptyTitle}>No connected Portal</h3>
                             <p className={styles.emptyDesc}>
                                 Set up your developer credentials or enable Demo Mode in the settings panel to sync academic deadlines.

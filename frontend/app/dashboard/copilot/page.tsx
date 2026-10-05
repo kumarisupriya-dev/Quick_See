@@ -35,7 +35,7 @@ export default function AiCopilotDashboard() {
                     setMessages([
                         {
                             role: "model",
-                            content: `👋 Hi! I am your **Quick See Academic Copilot**.\n\nI have loaded your cohort's class timetables, daily preparation checksheets, cancellation updates, shared study drivees, and your target GPA records.\n\nHow can I help you coordinate your studies today?`
+                            content: `Hi! I am your **Quick See Academic Copilot**.\n\nI have loaded your cohort's class timetables, daily preparation checksheets, cancellation updates, shared study drivees, and your target GPA records.\n\nHow can I help you coordinate your studies today?`
                         }
                     ]);
                 }
@@ -86,7 +86,7 @@ export default function AiCopilotDashboard() {
         } catch (err: any) {
             setMessages(prev => [
                 ...prev,
-                {role: "model", content: `❌ Error: ${err.message || "Failed to contact copilot."}`}
+                {role: "model", content: `Error: ${err.message || "Failed to contact copilot."}`}
             ]);
         } finally {
             setSending(false);
@@ -118,7 +118,6 @@ export default function AiCopilotDashboard() {
             );
         });
     };
-
     if (loading) {
         return (
             <div className={styles.loader}>
@@ -137,7 +136,6 @@ export default function AiCopilotDashboard() {
                 </p>
             </div>
             <div className={styles.chatWrapper}>
-                {/* Scrollable chat feed */}
                 <div className={styles.chatHistory}>
                     {messages.map((msg, index) => (
                         <div
@@ -158,7 +156,6 @@ export default function AiCopilotDashboard() {
                             </div>
                         </div>
                     ))}
-                    {/* Typing loader */}
                     {sending && (
                         <div className={`${styles.messageRow} ${styles.messageRowModel}`}>
                             <span className={styles.messageSender}>Copilot</span>
@@ -171,7 +168,6 @@ export default function AiCopilotDashboard() {
                     )}
                     <div ref={chatEndRef}/>
                 </div>
-                {/* Suggestions pills */}
                 <div className={styles.suggestions}>
                     {SUGGESTIONS.map((s, idx) => (
                         <button
@@ -185,7 +181,6 @@ export default function AiCopilotDashboard() {
                         </button>
                     ))}
                 </div>
-                {/* Message input area */}
                 <div className={styles.inputArea}>
                     <form
                     onSubmit={(e) => {

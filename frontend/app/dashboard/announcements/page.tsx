@@ -143,7 +143,7 @@ export default function AnnouncementsDashboard() {
             setAnnTitle("");
             setAnnContent("");
             setAnnPinned(false);
-            alert("📢 Class announcement posted!");
+            alert("Class announcement posted!");
             await fetchBoardData(profile.batch_id);
         } catch (err: any) {
             alert(`Failed to post: ${err.message || err}`);
@@ -220,7 +220,7 @@ export default function AnnouncementsDashboard() {
             setPollQuestion("");
             setPollOptions(["", ""]);
 
-            alert("📊 Live Class Poll created successfully!");
+            alert("Live Class Poll created successfully!");
             await fetchBoardData(profile.batch_id);
         } catch (err: any) {
             alert(`Failed to create poll: ${err.message || err}`);
@@ -255,7 +255,6 @@ export default function AnnouncementsDashboard() {
             </div>
         );
     }
-
     return (
         <div className={styles.container}>
             <div className={styles.header}>
@@ -265,24 +264,21 @@ export default function AnnouncementsDashboard() {
                 </p>
             </div>
             <div className={styles.grid}>
-                {/* Board feed list */}
                 <div className={styles.feedContainer}>
-                    <h2 className={styles.sectionTitle}>📣 Class Notices</h2>
+                    <h2 className={styles.sectionTitle}>Class Notices</h2>
                     {announcements.length === 0 && polls.length === 0 && (
                         <div className={styles.emptyState}>
                             The board is completely clean! No notice postings yet.
                         </div>
                     )}
-                    {/* Render notices */}
                     {announcements.map((ann) => (
                         <div
                         key={ann.id}
                         className={`${styles.announcementCard} ${ann.is_pinned ? styles.cardPinned : ""}`}
                         >
                             {ann.is_pinned && (
-                                <div className={styles.pinnedHeader}>📌 Pinned Announcement</div>
+                                <div className={styles.pinnedHeader}>Pinned Announcement</div>
                             )}
-                            {/* Pin action */}
                             {profile?.role === "class_rep" && (
                                 <button
                                 type="button"
@@ -290,7 +286,7 @@ export default function AnnouncementsDashboard() {
                                 onClick={() => handleTogglePin(ann)}
                                 title={ann.is_pinned ? "Unpin Announcement" : "Pin Announcement"}
                                 >
-                                    📌
+                                    Delete
                                 </button>
                             )}
                             <h3 className={styles.announcementTitle}>{ann.title}</h3>
@@ -302,7 +298,6 @@ export default function AnnouncementsDashboard() {
                             </div>
                         </div>
                     ))}
-                    {/* Render interactive polls */}
                     {polls.map((poll) => {
                         const totalVotes = poll.poll_options.reduce(
                             (acc, opt) => acc + opt.poll_votes.length,
@@ -311,10 +306,9 @@ export default function AnnouncementsDashboard() {
                         const userVote = poll.poll_options.find(opt =>
                         opt.poll_votes.some(v => v.user_id === user?.id)
                         );
-
                         return (
                             <div key={poll.id} className={styles.pollCard}>
-                                <h3 className={styles.pollQuestion}>📊 Poll: {poll.question}</h3>
+                                <h3 className={styles.pollQuestion}>Poll: {poll.question}</h3>
                                 <div className={styles.pollOptionsList}>
                                     {poll.poll_options.map((opt) => {
                                         const optVotes = opt.poll_votes.length;
@@ -350,9 +344,7 @@ export default function AnnouncementsDashboard() {
                         );
                     })}
                 </div>
-                {/* Sidebar input forms */}
                 <div className={styles.sidebar}>
-                    {/* Announcement sharing form */}
                     <div className={styles.sidebarCard}>
                         <h2 className={styles.cardTItle}>Share Announcement</h2>
                         <form onSubmit={handleShareAnnouncement} className={styles.form}>
@@ -399,7 +391,6 @@ export default function AnnouncementsDashboard() {
                             </button>
                         </form>
                     </div>
-                    {/* Poll creation form */}
                     <div className={styles.sidebarCard}>
                         <h2 className={styles.cardTitle}>Create Class Poll</h2>
                         <form onSubmit={handleCreatePoll} className={styles.form}>

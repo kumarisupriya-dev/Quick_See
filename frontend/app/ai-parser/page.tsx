@@ -76,7 +76,7 @@ export default function AiParserPage() {
             if (error) throw error;
             setUserRole("class_rep");
             setErrorMsg("");
-            alert("👑 You are promoted to Class Representative! You can save schedules.");
+            alert("You are promoted to Class Representative! You can save schedules.");
         } catch (err: any) {
             setErrorMsg(`Failed to promote: ${err.message}`);
         }
@@ -244,7 +244,7 @@ export default function AiParserPage() {
                     </div>
                     {userRole === "student" && (
                         <div className={styles.roleAlert}>
-                            🔒 <strong>Class Rep Permissions Required:</strong> Your current role is<strong>Student</strong>.
+                            <strong>Class Rep Permissions Required:</strong> Your current role is<strong>Student</strong>.
                             Only Class Representatives can write standard schedules.
                             <br />
                             <button
@@ -252,7 +252,7 @@ export default function AiParserPage() {
                             className={styles.btnPromote}
                             style={{marginTop: "0.5rem"}}
                             >
-                                👑 Promote Me to Class Rep (Testing Mode)
+                                Promote Me to Class Rep (Testing Mode)
                             </button>
                         </div>
                     )}
@@ -336,7 +336,7 @@ export default function AiParserPage() {
                                         className={styles.btnDeleteRow}
                                         onClick={() => handleDeleteRow(index)}
                                         >
-                                            🗑️
+                                            (delete row button)
                                         </button>
                                     </td>
                                 </tr>
@@ -346,7 +346,7 @@ export default function AiParserPage() {
                     </div>
                     <div className={styles.btnActionRow}>
                         <button type="button" className={styles.btnAddClass} onClick={handleAddRow}>
-                            ➕ Add Class Row
+                            Add Class Row
                         </button>
                         <div style={{display: "flex", gap: "1rem"}}>
                             <button
@@ -391,7 +391,6 @@ export default function AiParserPage() {
                     onChange={handleFileChange}
                     style={{display: "none"}}
                     />
-                    {/* Drag & drop zone */}
                     <div
                     className={`${styles.dropzone || styles.dropZone} ${dragActive ? styles.dropzoneActive : ""}`}
                     onDragEnter={handleDrag}
@@ -400,7 +399,14 @@ export default function AiParserPage() {
                     onDrop={handleDrop}
                     onClick={triggerFileInput}
                     >
-                        <div className={styles.uploadIcon}>📅</div>
+                        <div className={styles.uploadIcon}>
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="12" y1="18" x2="12" y2="12" />
+                                <polyline points="9 15 12 12 15 15" />
+                            </svg>
+                        </div>
                         <h3 className={styles.uploadTitle}>
                             {file ? "Change selected file" : "Drag and drop your file here"}
                         </h3>
@@ -408,7 +414,6 @@ export default function AiParserPage() {
                             Supports PDF, PNG, JPG, pr JPEG up to 10MB
                         </p>
                     </div>
-                    {/* Selected file details */}
                     {file && (
                         <div className={styles.fileList}>
                             <div className={styles.fileRow}>
