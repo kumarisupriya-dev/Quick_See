@@ -330,7 +330,7 @@ export default function StudyResourcesDashboard() {
                             <input
                             type="text"
                             className={styles.input}
-                            placeholder="e.g. Organic Chemistry Lecture 5 Summary"
+                            placeholder="e.g. CS-402 Computer Networks 1st-term Notes"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                             required

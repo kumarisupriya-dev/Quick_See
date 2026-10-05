@@ -46,7 +46,6 @@ export default function FlashcardsDashboard() {
     const [originalCount, setOriginalCount] = useState(0);
 
     const supabase = createClient();
-
     const fetchDecks = async (batchId: string) => {
         try {
             const {data, error} = await supabase
@@ -71,7 +70,23 @@ export default function FlashcardsDashboard() {
             console.error("Failed to load decks:", err);
         }
     };
-
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (!activeDeck || reviewQueue.length === 0) return;
+            if (e.code === "Space") {
+                e.preventDefault();
+                setIsFlipped((prev) => !prev);
+            } else if (e.key === "1" && isFlipped) {
+                handleMasteryFeedback("hard");
+            } else if (e.key === "2" && isFlipped) {
+                handleMasteryFeedback("medium");
+            } else if (e.key === "3" && isFlipped) {
+                handleMasteryFeedback("easy");
+            }
+        };
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [activeDeck, isFlipped, reviewQueue, currentIndex]);
     useEffect(() => {
         async function loadProfileAndDecks() {
             try {
@@ -309,31 +324,19 @@ export default function FlashcardsDashboard() {
                                     </div>
                                     <div className={styles.playerControls}>
                                         <span className={styles.btnText}>
-                                            {isFlipped ? "How well did you know this answer?"
-                                            : "Click the card to reveal the answer"}
+                                            {isFlipped ? "Rate mastery: [1]Hard • [2] Medium • [3] Easy"
+                                            : "Click card or press [Space] to reveal answer"}
                                         </span>
                                         {isFlipped && (
                                             <div className={styles.masteryButtons}>
-                                                <button
-                                                type="button"
-                                                className={styles.btnHard}
-                                                onClick={() => handleMasteryFeedback("hard")}
-                                                >
-                                                    hard (Review Soon)
+                                                <button type="button" className={styles.btnHard} onClick={() => handleMasteryFeedback("hard")}>
+                                                    Hard <kbd style={{fontSize: "0.65rem", padding: "1px 4px", border: "1px solid var(--border)", borderRadius: "3px", marginLeft: "4px"}}>1</kbd>
                                                 </button>
-                                                <button
-                                                type="button"
-                                                className={styles.btnMedium}
-                                                onClick={() => handleMasteryFeedback("medium")}
-                                                >
-                                                    Medium (Loop Later)
+                                                <button type="button" className={styles.btnMedium} onClick={() => handleMasteryFeedback("medium")}>
+                                                    Medium <kbd style={{fontSize: "0.65rem", padding: "1px 4px", border: "1px solid var(--border)", borderRadius: "3px", marginLeft: "4px"}}>2</kbd>
                                                 </button>
-                                                <button
-                                                type="button"
-                                                className={styles.btnEasy}
-                                                onClick={() => handleMasteryFeedback("easy")}
-                                                >
-                                                    Easy (Mastered)
+                                                <button type="button" className={styles.btnEasy} onClick={() => handleMasteryFeedback("easy")}>
+                                                    Easy <kbd style={{fontSize: "0.65rem", padding: "1px 4px", border: "1px solid var(--border)", borderRadius: "3px", marginLeft: "4px"}}>3</kbd>
                                                 </button>
                                             </div>
                                         )}
