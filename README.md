@@ -10,11 +10,11 @@ Furthermore, it syncs updates-like cancellations or reschedules-in real-time acr
 
 **Real-Time Schedule Sync:** Class representatives can post cancellations or reschedules, which instantly update the calendar dashboards of all batch mates in real-time.
 
-**Crowdsourced Material Checklist:** Share preparation checksheets for courses(e.g. "Wear lab coat). Peer moderation filters out duplicate or incorrect entries.
+**Crowdsourced Material Checklist:** Share preparation checksheets for courses(e.g. "Wear lab coat for Chemistry Lab). Peer moderation filters out duplicate or incorrect entries.
 
 **Nightly Pack-Your-Bag Alert:** Receives push notifications and email summaries at 9:00 PM listing tomorrow's schedule and what to pack.
 
-**LMS Portal Sync:** Connects with Canvas, Moodle, and Blackboard sandbox credentials to pull deadlines and sync assignments straight into your cohort checklist.
+**Academic LMS Integration:** Connects with Canvas, Moodle, and Blackboard sandbox credentials to pull deadlines and sync assignments straight into your cohort checklist.
 
 **Cohort Study Material Drive:** Category-organized repository (Lecture Notes, Slides, Past Papers) with peer upvoting and live countdown cards ticking down to midterms/finals.
 
@@ -26,31 +26,27 @@ Furthermore, it syncs updates-like cancellations or reschedules-in real-time acr
 
 **Peer Study Rooms & Pomodoro Timer:** Schedule co-working sessions, track attendee seat capacities, and study together using the interactive Pomodoro academic planner.
 
-**Flashcards Hub:** Create shared flashcard decks with 3D card flips and study queues that loop difficult cards until mastered.
+**Flashcards Hub:** Create shared study decks with 3D card flips, AI-assisted card generation from study topics, desktop keyboard shortcuts (Space to flip, 1-3 to rate), and adaptive spaced repetition review queues.
 
 ## Known Bugs
-**SW Active Timing Race:** Notification subscriptions may ocassionally fail if requested immediately before the service worker reaches an active state.
+**Service Worker Registration Timing:** Notification permission prompts must complete after the browser service worker reaches active state.
 
-**Framer Motion Grid Shifts:** Rapid status toggles on the focus countdowns or Pomodoro clock may trigger minor, temporary pixel layout shifts.
+**Local Theme Hydration:** Themes are stored in `localStorage` to avoid flicker; users on private/incognito browsing will default to system preferences.
 
-**Chrome extension CSP Warning:** A harmless Content Security Policy warning may appear in your console due to Chrome extensions attempting to hook into the localhost.
-
-**Theme Toggle Flicker:** Persisting theme states via localStorage can cause a brief flash or light-mode styling on high-speed page reloads.
+**Third-Party Extensions:** Certain browser extensions may trigger begin Content Security Policy (CSP) notices in local development consoles.
 
 ## Tech Stack
 #### Frontend:
 
-- Next,js (App Router) with TypeScript
-- Tailwind CSS (Theme layout & Styles)
-- Framer Motion (Transactions & animations)
-- Zustand (Global States)
-- Service Worker API (Background push)
-
+* **Framework:** Next.js (App Router) & React 19 with TypeScript
+* **Styling:** Tailwind CSS v4 & Modular CSS with high-contrast custom properties
+* **Push Notifications:** Web Push API & Service Worker background worker
 #### Backend:
 
-- Supabase (PostgreSQL database, Realtime channels, Auth, Stoarge)
-- Google Gemini 2.5 Flash API (AI parsing & Copilot chat)
-- web-push SDK (VAPID notification dispatching)
+* **Database & Auth:** Supabase (PostgreSQL with Row Level Security & Realtime channels)
+* **Storage:** Supabase Storage (Timetables and document uploads)
+* **AI & Document Intelligence:** Goggle GenAI (Gemini 2.5 Flash for multimodal document parsing and contextual copilot)
+* **Notification Dispatch:** Node.js `web-push` SDK with VAPID credentials
 
 ## How to use?
 1. **Onboarding Cohort:** Sign up and choose your University, Campus, Department, and Batch. If they don't exist, create them to setup your new class cohort.
@@ -73,18 +69,18 @@ Furthermore, it syncs updates-like cancellations or reschedules-in real-time acr
 4. Run development server: `npm run dev`
 
 ## AI Usage
-- **Initial Setup**
-- **Troubleshooting & UI Bugs**
-- **Complex Architecture**
+- **Initial Setup:** Scaffolding initial Typescript interface structures and repetitive SQL seed Scripts for academic batches.
+- **Troubleshooting & UI Bugs:** Diagnosing edge-case Typescript compiler warnings, verifying CSS media query syntax across mobile viewports and drafting test scenarios.
+- **Documentation:** Used AI to help with the structure of the Readme.
 
 ## Future Plan 
 - **Native Mobile Apps:** Port the React frontend using React Native for native Android and iOS push experiences.
-- **AI Study Summarizer:** Feed uploaded lecture notes directly to Gemini to generate flashcard decks automatically.
+- **Calendar Export:** One-click calendar sync with Google Calendar and Apple Calendar with dynamic iCal subscription feeds.
 - **Social Timetable Sharing:** Allow publishing of focus room to other departments.
 
 ## Screenshots of Project
-![img.png](img.png)
-![img_1.png](img_1.png)
-![img_2.png](img_2.png)
-![img_3.png](img_3.png)
-![img_4.png](img_4.png)
+![img_5.png](img_5.png)
+![img_6.png](img_6.png)
+![img_7.png](img_7.png)
+![img_8.png](img_8.png)
+![img_9.png](img_9.png)
