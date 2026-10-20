@@ -1,86 +1,86 @@
-# Quick_See 
+# Quick See
 
-## Overview
-An intelligent, crowdsourced academic management co-pilot built to take the pain out of managing university schedules. Instead of manually entering classes, deadlines, and exam dates into your calendar, you just upload syllabus or timetable and let the AI build your calendar.
+A collaborative timetable manager and daily preparation tracker built for university batches.
 
-Furthermore, it syncs updates-like cancellations or reschedules-in real-time across your entire class cohort. It also features a nightly notification helper that check tomorrow's timetable and peer checklists to tell you exactly what physical books, notes, lab gear you need to pack for the next day.
+## Description
 
-## Features
-**AI-Powered Timetable Parser:** Drag and drop an image or PDF of your university timetable. The app extracts lectures, timings, rooms, and instructors instantly.
+College timetables change constantly—professors swap lecture slots, cancel morning classes at the last minute, or shift rooms across campus. Usually, these updates get lost in messy WhatsApp group chats, and students end up showing up to empty lecture halls or forgetting required lab manuals.
 
-**Real-Time Schedule Sync:** Class representatives can post cancellations or reschedules, which instantly update the calendar dashboards of all batch mates in real-time.
+Quick See fixes this by keeping an entire class batch in sync. A student or Class Representative uploads a timetable image or PDF syllabus once, and the app extracts all lecture times, room numbers, and course codes into a shared schedule. If a class gets rescheduled or canceled, any verified batch member can update the slot so everyone's calendar reflects it in real time. It also features a nightly 9:00 PM alert that checks the next day's timetable and peer checklists to tell students exactly which books, records, and lab gear to pack.
 
-**Crowdsourced Material Checklist:** Share preparation checksheets for courses(e.g. "Wear lab coat for Chemistry Lab). Peer moderation filters out duplicate or incorrect entries.
+### Screenshots
 
-**Nightly Pack-Your-Bag Alert:** Receives push notifications and email summaries at 9:00 PM listing tomorrow's schedule and what to pack.
+![Dashboard Overview](img_5.png)
 
-**Academic LMS Integration:** Connects with Canvas, Moodle, and Blackboard sandbox credentials to pull deadlines and sync assignments straight into your cohort checklist.
+![Timetable Schedule View](img_6.png)
 
-**Cohort Study Material Drive:** Category-organized repository (Lecture Notes, Slides, Past Papers) with peer upvoting and live countdown cards ticking down to midterms/finals.
+![AI Timetable Parser](img_7.png)
 
-**Class Notice Board & Polls:** Share cohort announcements (pin notices to top of feed) and host scheduling polls with real-time percentage indicators.
+![Daily Item Checklist](img_8.png)
 
-**GPA Calculator & Projection:** Auto-populates active courses from your timetable to calculate SGPA, combined with a goal projection widget estimating grades needed in remaining semesters.
+![Study Tools and Flashcards](img_9.png)
 
-**AI Academic Copilot:** A chat assistant fed with all your batch databases (timetables, resources, checklists, GPA goals) to act as a custom academic planner.
+## Getting Started
 
-**Peer Study Rooms & Pomodoro Timer:** Schedule co-working sessions, track attendee seat capacities, and study together using the interactive Pomodoro academic planner.
+### Dependencies
 
-**Flashcards Hub:** Create shared study decks with 3D card flips, AI-assisted card generation from study topics, desktop keyboard shortcuts (Space to flip, 1-3 to rate), and adaptive spaced repetition review queues.
+* **Node.js:** v18.17.0 or higher (v20+ recommended)
+* **npm:** v9.0.0 or higher
+* **Operating System:** Windows 10/11, macOS, or Linux
+* **Browser:** Any modern browser supporting Web Push (Chrome, Edge, Firefox, Brave)
+* **API Accounts:**
+  * Free [Supabase](https://supabase.com) project for PostgreSQL database, auth, and realtime channels.
+  * Free [Google AI Studio](https://aistudio.google.com) key for timetable document parsing.
 
-## Known Bugs
-**Service Worker Registration Timing:** Notification permission prompts must complete after the browser service worker reaches active state.
+### Installing
 
-**Local Theme Hydration:** Themes are stored in `localStorage` to avoid flicker; users on private/incognito browsing will default to system preferences.
+1. Clone the repository:
+```bash
+git clone https://github.com/kumarisupriya-dev/Quick_See.git
+cd Quick_See/frontend
+```
 
-**Third-Party Extensions:** Certain browser extensions may trigger begin Content Security Policy (CSP) notices in local development consoles.
+2. Install dependencies:
+```bash
+npm install
+```
 
-## Tech Stack
-#### Frontend:
+3. Create environment configuration file:
+Create a `.env.local` file inside the `frontend/` directory:
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_client_key
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+GEMINI_API_KEY=your_google_gemini_api_key
+NEXT_PUBLIC_VAPID_PUBLIC_KEY=your_vapid_public_key
+VAPID_PRIVATE_KEY=your_vapid_private_key
+CRON_SECRET=your_nightly_cron_authorization_key
+```
 
-* **Framework:** Next.js (App Router) & React 19 with TypeScript
-* **Styling:** Tailwind CSS v4 & Modular CSS with high-contrast custom properties
-* **Push Notifications:** Web Push API & Service Worker background worker
-#### Backend:
+### Executing program
 
-* **Database & Auth:** Supabase (PostgreSQL with Row Level Security & Realtime channels)
-* **Storage:** Supabase Storage (Timetables and document uploads)
-* **AI & Document Intelligence:** Goggle GenAI (Gemini 2.5 Flash for multimodal document parsing and contextual copilot)
-* **Notification Dispatch:** Node.js `web-push` SDK with VAPID credentials
+1. Run development server:
+```bash
+npm run dev
+```
 
-## How to use?
-1. **Onboarding Cohort:** Sign up and choose your University, Campus, Department, and Batch. If they don't exist, create them to setup your new class cohort.
-2. **Parse Timetable:** Navigate to "AI Parser" and drop your timetable file. Review the extracted lectures and click "Confirm & Import".
-3. **Plan Checklists:** Head to "Checklist" to add items or look up peer attachments.
-4. **Utilize Study Tools:** Open the GPA calculator, Pomodoro focus room, or Flashcards hub to track your milestones.
+2. Open your browser and navigate to:
+```text
+http://localhost:3000
+```
 
-## How to run locally
-1. Clone the repository: `git clone https://github.com/kumarisupriya-dev/Quick_See`
-2. Install dependencies in the frontend folder: `npm install`
-3. Environment Configuration: Crate a `.env.local` file inside the `frontend` root: ```env
-   NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_client_key
-   SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
-   GEMINI_API_KEY=your_google_gemini_api_key
-   NEXT_PUBLIC_VAPID_PUBLIC_KEY=your_vapid_public_key
-   VAPID_PRIVATE_KEY=your_vapid_private_key
-   CRON_SECRET=your_nightly_cron_authorization_key```
+3. Build and test production build:
+```bash
+npm run build
+npm run start
+```
 
-4. Run development server: `npm run dev`
+## Help
 
-## AI Usage
-- **Initial Setup:** Scaffolding initial Typescript interface structures and repetitive SQL seed Scripts for academic batches.
-- **Troubleshooting & UI Bugs:** Diagnosing edge-case Typescript compiler warnings, verifying CSS media query syntax across mobile viewports and drafting test scenarios.
-- **Documentation:** Used AI to help with the structure of the Readme.
+* **Notification Permission Not Prompting:** If the notification bell does not prompt for permission, make sure notifications aren't blocked in your browser site settings (`chrome://settings/content/notifications`) and that you are accessing via `localhost` or `https`.
+* **Missing Batch Records on Login:** If your courses don't appear after signing up, ensure you selected or created a valid batch during the `/onboarding` step so your user profile links to a `batch_id`.
+* **Gemini API 400/500 Errors:** Make sure your `GEMINI_API_KEY` is active and has permissions for the `gemini-2.5-flash` model in Google AI Studio.
 
-## Future Plan 
-- **Native Mobile Apps:** Port the React frontend using React Native for native Android and iOS push experiences.
-- **Calendar Export:** One-click calendar sync with Google Calendar and Apple Calendar with dynamic iCal subscription feeds.
-- **Social Timetable Sharing:** Allow publishing of focus room to other departments.
+## License
 
-## Screenshots of Project
-![img_5.png](img_5.png)
-![img_6.png](img_6.png)
-![img_7.png](img_7.png)
-![img_8.png](img_8.png)
-![img_9.png](img_9.png)
+This project is licensed under the MIT License - see the LICENSE file for details.
